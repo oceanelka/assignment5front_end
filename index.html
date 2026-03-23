@@ -9,8 +9,23 @@
 <body>
     <main>
         <div class="">
+            <form id="mySearchForm">
+                <input type="text" id="searchInput" name="query" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form>
 
-            
+            <table id="mySearchTable">
+                <th>
+                    <tr>
+                        <th>Street</th>
+                        <th>Issue Date</th>
+                        <th>Violation</th>
+                        <th>Discounted Fine</th>
+                        <th>Full Fine</th>
+                    </tr>
+                </th>
+                <tbody></tbody>
+            </table>
         </div>
     </main>
     <script src="script.js"></script>
