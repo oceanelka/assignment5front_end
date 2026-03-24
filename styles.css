@@ -2,3 +2,19 @@
 Elka Evasco
 March 19, 2026
 */
+
+#header {
+    text-align: center;
+    padding-top: 30px;
+
+}
+
+.table, .search {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+.search {
+    padding: 20px;
+}

@@ -53,6 +53,12 @@ async function demonstrateAsyncCall() {
 	const encodedURL = encodeURI(apiUrl);
 	const result = await getData(encodedURL);
 
+	tableBody.innerHTML = "";
+
+	if(streetName !== "" && result.length > 0) {
+		tableSection.style.display = "block";
+	}
+
 	// Add results to the table
 	result.forEach(item => {
         const row = `
