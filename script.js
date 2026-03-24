@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	header.appendChild(header1)
 })
 
-// Async function that fetch the json  data from API
+// Async function that fetches json data from API
 async function getData(url) {
 	return new Promise(async (resolve, reject) => {
 		try {
@@ -37,4 +37,36 @@ async function getData(url) {
 	});
 }
 
+// Search API and displays results 
+async function demonstrateAsyncCall() {
+	console.log("Starting async operation...");
+	
+	// Get the value entered by the user from the input field 
+	let streetName = input.value; // This would be coming from the form input.
+	
+	// API URL using the street name entered. 
+	const apiUrl =   "https://data.winnipeg.ca/resource/bhrt-29rb.json?" +
+				`$where=street LIKE '%${streetName}%'` +
+				"&$order=issue_date DESC" +
+				"&$limit=100";
 
+	const encodedURL = encodeURI(apiUrl);
+	const result = await getData(encodedURL);
+
+	// Add results to the table
+	result.forEach(item => {
+        const row = `
+          <tr>
+            <td>${item.street || "N/A"}</td>
+            <td>${item.issue_date || "N/A"}</td>
+			<td>${item.violation || "N/A"}</td>
+			<td>${item.discounted_fine || "N/A"}</td>
+			<td>${item.full_fine || "N/A"}</td>
+          </tr>
+        `;
+        tableBody.innerHTML += row;
+      });
+
+	// Prints result in console 
+	console.log(result);
+}
