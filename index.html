@@ -8,6 +8,7 @@
 </head>
 <body>
     <header id="header"></header>
+    
     <main>
         <div class="search">
             <form id="mySearchForm">
@@ -17,9 +18,9 @@
             </form>
         </div>
 
-            <div class ="table"> 
+            <div class ="table" id="tableSection"> 
                 <table id="mySearchTable">
-                    <th>
+                    <thead>
                         <tr>
                             <th>Street</th>
                             <th>Issue Date</th>
@@ -27,12 +28,12 @@
                             <th>Discounted Fine</th>
                             <th>Full Fine</th>
                         </tr>
-                    </th>
+                    </thead>
                     <tbody></tbody>
                 </table>
             </div>
     </main>
-    
+
     <script src="script.js"></script>
 </body>
 </html>

@@ -16,5 +16,9 @@ March 19, 2026
 }
 
 .search {
-    padding: 20px;
+    padding: 20px; 
+}
+
+#tableSection {
+    display: none;
 }

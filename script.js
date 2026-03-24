@@ -7,7 +7,8 @@ https://data.winnipeg.ca/resource/bhrt-29rb.json
 // This gets the search form, search input and table body from the HTML
 const form = document.getElementById("mySearchForm");
 const input = document.getElementById("searchInput");
-const tableBody = document.querySelector("#mySearchTable tbody")
+const tableBody = document.querySelector("#mySearchTable tbody");
+const tableSection = document.getElementById("tableSection");
 
 //  Event of form submission
 form.addEventListener("submit", (event) => {
@@ -44,6 +45,11 @@ async function demonstrateAsyncCall() {
 	// Get the value entered by the user from the input field 
 	let streetName = input.value; // This would be coming from the form input.
 	
+	if (streetName === "") {
+		tableSection.style.display = "block"
+		return;
+	}
+
 	// API URL using the street name entered. 
 	const apiUrl =   "https://data.winnipeg.ca/resource/bhrt-29rb.json?" +
 				`$where=street LIKE '%${streetName}%'` +
@@ -54,10 +60,7 @@ async function demonstrateAsyncCall() {
 	const result = await getData(encodedURL);
 
 	tableBody.innerHTML = "";
-
-	if(streetName !== "" && result.length > 0) {
-		tableSection.style.display = "block";
-	}
+	tableSection.style.display = "block";
 
 	// Add results to the table
 	result.forEach(item => {
